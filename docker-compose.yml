@@ -1,0 +1,28 @@
+version: "3.9"
+
+networks:
+  trabalho:
+    driver: bridge
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile-Client
+    ports:
+      - "6070:3000"
+    env_file:
+      - "Client/.env"
+    networks:
+      - trabalho
+  
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-Server
+    ports:
+      - "6071:7000"
+    env_file:
+      - "Server/.env"
+    networks:
+      - trabalho

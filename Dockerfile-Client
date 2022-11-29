@@ -1,0 +1,10 @@
+FROM node:16.18.1-alpine3.15
+
+WORKDIR /usr/src/app
+
+COPY Client/src ./src
+COPY Client/package*.json ./
+
+RUN npm install
+
+CMD ["npm", "run", "prod"]
